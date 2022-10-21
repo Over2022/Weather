@@ -1,5 +1,6 @@
 <!doctype html>
 
+
 <html lang="ru">
 <head>
     <style>
@@ -40,12 +41,18 @@
     <div>
     <div class="container mt-5">
         <div class="row">
-            <div class="col-2 offset-1">
+            <div class="col-4 offset-9">
                 <br>
                 <br>
-                <h1>Информация</h1>
+                <legend><center>Погода сейчас</center></legend>
                 <div class="alert alert-danger">
-                    Погода в Минске
+                     <img src="http://openweathermap.org/img/w/{{ info.icon }}.png" alt="Фото погоды"
+                         class="img-thunbnail">
+                  <b>Город:{{ info.city }}</b><br>
+                    <b>Влажность:</b>{{ info.humidity }}%<br>
+                    <b>Максимальная температура:</b><big>{{ info.temp_max }}</big><sup>0</sup><br>
+                    <b>Минимальная температура:</b><big>{{ info.temp_min }}</big><sup>0</sup><br>
+
                 </div>
             </div>
         </div>
