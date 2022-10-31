@@ -1,24 +1,24 @@
 <!doctype html>
-
-
+{% load static %}
 <html lang="ru">
 <head>
-    <style>
-.my_button {
+        <style>
+    .my_button {
     width: 100px;
     height: 38px;
+    bottom: 20px;
 }
-
-
     </style>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta charset="UTF-8">
+	<meta name="viewport"
+		  content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	    <link href="{% static '/css/styles.css' %}" rel="stylesheet"  type="text/css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-warning">
+	<title>Document</title>
+	 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-black">
         <div class="container-fluid">
-            <a class="navbar-brand"><H2>Погодное приложение</H2></a>
+            <a class="navbar-brand"><H2>Приложение о погоде</H2></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                     aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -28,9 +28,10 @@
                     <a class="nav-link" aria-current="page" href="#"><b>Главная страница</b></a>
                     <a class="nav-link" href="#"><b>Информация</b></a>
                 </ul>
-                <form class="d-flex" role="search">
+                <form class="d-flex" method="post">
+                    {% csrf_token %}
             <span class="has-float-label text-success">
-          <input class="form-control me-2" type="text" placeholder="Поиск" id="city">
+                {{ form.name }}
                 <label>Введите город</label>
     </span>
                     <button class="my_button btn btn-outline-success" type="submit">Поиск</button>
@@ -41,28 +42,36 @@
     <div>
     <div class="container mt-5">
         <div class="row">
-            <div class="col-4 offset-9">
+            <div class="col-4 offset-5">
                 <br>
                 <br>
+                {% for q in all_cities %}
                 <legend><center>Погода сейчас</center></legend>
                 <div class="alert alert-danger">
-                     <img src="http://openweathermap.org/img/w/{{ info.icon }}.png" alt="Фото погоды"
-                         class="img-thunbnail">
-                  <b>Город:{{ info.city }}</b><br>
-                    <b>Влажность:</b>{{ info.humidity }}%<br>
-                    <b>Максимальная температура:</b><big>{{ info.temp_max }}</big><sup>0</sup><br>
-                    <b>Минимальная температура:</b><big>{{ info.temp_min }}</big><sup>0</sup><br>
+                   <form action="" method="get">
+                    <button class="btn btn-outline-success" type="submit">Удалить </button>
 
+                     <img src="http://openweathermap.org/img/w/{{ q.icon }}.png" alt="Фото погоды"
+                         class="img-thunbnail">
+                  <b>Город:{{ q.city }}</b><br>
+                    <b>Влажность:</b>{{ q.humidity }}%<br>
+                    <b>Максимальная температура:</b><big>{{ q.temp_max }}</big><sup>0</sup><br>
+                    <b>Минимальная температура:</b><big>{{ q.temp_min }}</big><sup>0</sup><br>
+                       </form>
                 </div>
+                {% endfor %}
             </div>
         </div>
     </div>
 </div>
     <html>
-    <head>
-
+</head>
 
 <body>
-
+	<img class="box" src="static/css/imag/лист.png" >
+	<img class="box_2" src="static/css/imag/лист_2.png" >
+	<img class="box_3" src="static/css/imag/лист_3.png" >
+    <img class="box_4" src="static/css/imag/лист_3.png" >
 </body>
+
 </html>
